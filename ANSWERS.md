@@ -1,8 +1,8 @@
 # Midterm 1: answers
 
 GitHub username: dakenz0
-Session code: practice
-Fingerprint: 62355e0a
+Session code: kettle-62
+Fingerprint: 2f8a328a
 
 > Fill in the three lines above from `my_data/DATA.md`. Do not rename headings or table columns: a script reads the numbers.
 > Write only in the empty cells and lines. Percentages as 0.78 or 78 %, money as plain numbers.
@@ -21,46 +21,46 @@ The AI help included calculations, explanations and writing. I am responsible fo
 
 | config | recall@1 | recall@3 | recall@5 | MRR@10 |
 |---|---|---|---|---|
-| A | 0.733333 | 0.800000 | 0.850000 | 0.780317 |
-| B | 0.283333 | 0.433333 | 0.733333 | 0.417381
+| A | 0.450000 | 0.616667 | 0.733333 | 0.544484 |
+| B | 0.216667 | 0.366667 | 0.433333 | 0.327222
 
 ### 1b. Recall and 95 % Wilson interval of each candidate (recall at its own k)
 
 | candidate | recall@k | lower | upper |
 |---|---|---|---|
-| A, k=3 | 0.800000 | 0.682180 | 0.881716 |
-| A, k=5 | 0.850000 | 0.738852 | 0.919027 |
-| B, k=3 | 0.433333 | 0.315722 | 0.558968 |
-| B, k=5 | 0.733333 | 0.609910 | 0.828675
+| A, k=3 | 0.616667 | 0.490174 | 0.729119 |
+| A, k=5 | 0.733333 | 0.609910 | 0.828675 |
+| B, k=3 | 0.366667 | 0.256207 | 0.493172 |
+| B, k=5 | 0.433333 | 0.315722 | 0.558968
 
 ### 1c. Annual model cost in USD
 
 | candidate | annual cost |
 |---|---|
-| A, k=3 | 15291.28 |
-| A, k=5 | 20432.17 |
-| B, k=3 | 9660.92 |
-| B, k=5 | 11048.24
+| A, k=3 | 14074.60 |
+| A, k=5 | 18087.74 |
+| B, k=3 | 9627.37 |
+| B, k=5 | 10675.68
 
 ### 1d. Decision (at most 150 words)
 
 
-Chosen candidate: B, k=5
-I  choose B, k=5. It costs 11048.24 USD per year, below the 17900 budget. Its recall is 44/60 = 73.33%, with Wilson interval [60.99%, 82.87%]. A, k=3 has 80.00% recall [68.22%, 88.17%]. The intervals overlap, so this test does not show that A is better under the course rule. This does not mean equal quality. B, k=5 saves 4243.04 USD per year. A, k=5 costs 20432.17, above budget. B, k=3 costs less, but its interval [31.57%, 55.90%] is below B, k=5 without overlap. This supports B, k=5 over B, k=3. For my choice, recall is EN 70% (14/20), RU 70% (14/20), and KK 80% (16/20). EN and RU have the lowest recall here. With only 20 questions per language, we need more tests.
+Chosen candidate: B, k=3
+I choose B, k=3. Its yearly cost is 9627.37 USD, below the 12400 budget. Recall is 22/60 = 36.67%, with Wilson interval [25.62%, 49.32%]. B, k=5 has 43.33% recall [31.57%, 55.90%] and costs 10675.68. Their intervals overlap, so under the course rule this test does not show a winner. This does not prove equal quality. B, k=3 saves 1048.31 USD per year. Both A options are over budget: A, k=3 costs 14074.60; A, k=5 costs 18087.74. A, k=5 has interval [60.99%, 82.87%], above both B intervals without overlap, but it costs too much. My choice has recall EN 8/20 = 40%, RU 8/20 = 40%, and KK 6/20 = 30%. KK has the lowest recall here. The language groups are small, so we need more tests.
 
-### 1e. Next measurement (at most 60 words)
-Test A, k=3 and B, k=5 on the same 600 new questions: 200 per language, like real customer questions. Calculate recall and Wilson intervals for each language and overall. If A shows clearly higher recall, its extra 4243.04 USD per year may be worth paying within budget. Otherwise, keep B, k=5.
+### 1e. Next measurement (at most 60 words) 
+Test B, k=3 and B, k=5 on the same 600 new questions: 200 per language, like real customer questions. Compare overall and language recall with Wilson intervals. If B, k=5 shows a clear improvement, especially for KK, its extra 1048.31 USD per year may be worth paying within budget.
 ## Part 2: A document pipeline you can defend
 
 
 ### 2a. Numbers
 
-| pipeline | overall accuracy | weakest cell (language, condition) | accuracy there | lower | upper | annual cost |
-|---|---|---|---|---|---|---|
-| H | | | | | | |
-| L | | | | | | |
+| pipeline| overall accuracy | weakest cell (language, condition) | accuracy there | lower   | upper   | annual cost |
+|---------|------------------|------------------------------------|----------------|---------|---------|-------------|
+| H       | 0.883333         | RU, degraded                       | 0.733333       | 0.555517| 0.858175| 9083.03     | 
+| L       | 0.816667         | RU, degraded                       | 0.700000       | 0.521239| 0.833354| 5400.00     |
 
-Personal-data pages per year sent abroad under H:
+Personal-data pages per year sent abroad under H: 140525
 
 ### 2b. Memo (at most 300 words)
 To: Head of Operations
@@ -76,25 +76,25 @@ L gives the bank more control, but costs more. Remaining risks include Kazakh ex
 
 ### Q1
 
-Number: 2.17 (bill ratio); total-token ratio = 2.24.
-Why (at most 40 words): An output token costs five times as much as an input token. English has a higher share of output tokens. So the cost ratio is lower than the ratio of all tokens (2.24).
+Number: 2.20 (bill ratio); total-token ratio = 2.43
+Why (at most 40 words): An output token costs six times as much as an input token. English has a higher share of output tokens. This makes the bill ratio lower than the ratio of all tokens (2.43)
 
 ### Q2
 
-Number: 355
-Why (at most 40 words): Yes. The sentence starts near token 355 and ends before token 512. Its words can help find the chunk, but success is not certain. The later part is cut off without an error message.
+Number: 44.4%
+Why (at most 40 words): Only English is cut: EN has 920.5 e5 tokens, RU 448 and KK 266. English's last 408.5 tokens are left out without an error message. The embedding does not represent this part, so search loses its information
 
 ### Q3
 
-Number: 54.2 %
-Why (at most 40 words): Top-p keeps the most likely tokens until their probabilities add up to at least 0.9. It removes the rest and makes the remaining probabilities add to 1. Lower temperature makes likely tokens more likely but keeps all tokens.
+Number: 81.2 %
+Why (at most 40 words): Lowering temperature to 0.5 does not change the token order. It makes Monday more likely. All five tokens can still be chosen: positive temperature changes their probabilities but does not remove tokens
 
 ### Q4
 
-Number: 21.2 %
-Why (at most 40 words): For a base model with calibrated probabilities, we use account numbers and birthdays. We leave out multiplication and number sequences because they follow rules. A prompt adds no missing facts and cannot guarantee removing this limit.
+Number: 28.7 %
+Why (at most 40 words): For a calibrated base model, the course rule uses account numbers and birthdays. I leave out multiplication and sequences because they follow rules. 'Never invent' adds no missing facts and cannot remove this limit by itself
 
 ### Q5
 
-Number: 60494
-Why (at most 40 words): The first message is sent in all 28 requests. Prompt caching can make repeated text cheaper to process. The model still needs the chat history in each request and does not get a permanent memory.
+Number: 6.00
+Why (at most 40 words): The model has 120 tokens per parameter; Chinchilla has 20. It is over-trained by this compute rule. This does not mean overfitting. Chinchilla said models like GPT-3 needed more training data for their size
